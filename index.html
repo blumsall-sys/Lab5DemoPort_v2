@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#101820">
+  <meta name="description" content="Lab5 interactive 3D and 360° environments. Self-hosted on GitHub Pages.">
+  <title>LAB5 | Interactive Demo</title>
+  <link rel="icon" type="image/png" href="files/assets/216991793/1/Lab5_logo_small.png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="lab5-shell.css">
+  <style></style>
+  <script src="playcanvas-stable.min.js"></script>
+  <script src="lab5-config.js"></script>
+  <script src="__settings__.js"></script>
+  <script>
+    (function () {
+      const slug = new URLSearchParams(location.search).get('scene') || 'world';
+      const scenes = window.LAB5_CONFIG.scenes;
+      window.SCENE_PATH = (scenes[slug] || scenes.world).path;
+      window.LAB5_INITIAL_SLUG = scenes[slug] ? slug : 'world';
+    }());
+  </script>
+</head>
+<body>
+  <header id="lab5-topbar" aria-label="Scene controls">
+    <a class="lab5-brand" id="lab5-home-link" href="?scene=world" aria-label="Lab5, return to interactive environment">
+      <img src="files/assets/216991772/1/Lab5_logo_small.webp" alt="">
+      <span class="lab5-brand-type"><strong>LAB5</strong><small>INTERACTIVE DEMOS</small></span>
+    </a>
+    <nav id="lab5-scene-nav" aria-label="Choose a scene">
+      <button type="button" data-scene="world" aria-label="Enter 3D environment">3D World</button>
+      <button type="button" data-scene="panorama-1" aria-label="Enter first 360 degree location">360° One</button>
+      <button type="button" data-scene="panorama-2" aria-label="Enter second 360 degree location">360° Two</button>
+    </nav>
+    <div class="lab5-header-actions">
+      <button type="button" id="lab5-help" title="Controls and help" aria-label="Show controls and help">?</button>
+      <button type="button" id="lab5-fullscreen" title="Fullscreen" aria-label="Toggle fullscreen">⛶</button>
+      <a id="lab5-open" target="_blank" rel="noopener noreferrer" href="?scene=world" title="Open the demo in a new tab" aria-label="Open demo in a new tab">↗</a>
+    </div>
+  </header>
+  <div id="lab5-status" role="status" aria-live="polite"></div>
+  <button id="lab5-hud-toggle" aria-label="Show or hide in-scene information" title="Toggle in-scene information">H <span>HUD</span></button>
+  <dialog id="lab5-dialog" aria-labelledby="lab5-dialog-title">
+    <div class="lab5-dialog-heading">
+      <strong id="lab5-dialog-title">Controls</strong>
+      <button type="button" class="lab5-close" id="lab5-dialog-close" aria-label="Close">✕</button>
+    </div>
+    <div id="lab5-dialog-content"></div>
+  </dialog>
+  <script src="__modules__.js"></script>
+  <script src="__start__.js"></script>
+  <script src="__loading__.js"></script>
+  <script src="lab5-shell.js"></script>
+</body>
+</html>
